@@ -1,20 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FoodApplication.Controllers
+namespace FoodApplication.Controllers;
+
+public class RecipeController : Controller
 {
-    [Route("[controller]")]
-    public class RecipeController : Controller
+
+    public IActionResult Index()
     {
-        private readonly ILogger<RecipeController> _logger;
-
-        public RecipeController(ILogger<RecipeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }

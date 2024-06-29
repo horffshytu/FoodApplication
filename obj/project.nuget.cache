@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "W8EDaoMXwacOfCSeWVYNZys3DGe3pL4wnuhKh7rotGQCGWQsmiRJCAJyduO2CWovzc7S+fuQzrIKEgo0Cd+L6g==",
+  "dgSpecHash": "y2ELR14pIrA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\hp\\Desktop\\abdulazeez\\FoodApplication\\FoodApplication.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Abbas\\Desktop\\FoodApplication\\FoodApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Abbas\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

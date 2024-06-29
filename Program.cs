@@ -1,6 +1,11 @@
+using FoodApplication.IOC;
+
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
+builder.Services.AddHttpClientFactory(config);
+builder.Services.AddApiHandler();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
