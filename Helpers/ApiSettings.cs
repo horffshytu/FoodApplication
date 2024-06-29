@@ -2,7 +2,7 @@ namespace FoodApplication.Helpers;
 
 public class ApiSettings
 {
-    public string ApiKey { get; set; } = default!;
+    public string? ApiKey { get; set; } = default!;
     public string BaseUrl { get; set; } = default!;
     public string ClientName { get; set; } = default!;
     public Endpoints Endpoints { get; set; } = default!;

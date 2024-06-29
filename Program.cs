@@ -1,3 +1,4 @@
+using FoodApplication.Helpers;
 using FoodApplication.IOC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,9 @@ var config = builder.Configuration;
 builder.Services.AddHttpClientFactory(config);
 builder.Services.AddApiHandler();
 builder.Services.AddControllersWithViews();
+
+//IOptions Registration
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection(Constants.API_SETTINGS_SECTION));
 
 var app = builder.Build();
 

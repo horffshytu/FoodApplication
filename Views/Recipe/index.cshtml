@@ -1,10 +1,18 @@
+@model List<GetRecipeViewModel>
 @{
     ViewData["Title"] = "Recipes";
 }
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            @Html.Partial("_SearchBar")
+            @* @Html.Partial("_SearchBar") *@
         </div>
     </div>
 </div>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Title => @item.Publisher</li>
+    }
+</ul>

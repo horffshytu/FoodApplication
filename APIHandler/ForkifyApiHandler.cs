@@ -52,11 +52,11 @@ public class ForkifyApiHandler : IForkifyApiHandler
         }
     }
 
-    public async Task<GetRecipeResponse> GetRecipeList(string searchParam)
+    public async Task<GetRecipeResponse> GetRecipeList(string search)
     {
         try
         {
-            var endpoint = string.Format(_options.Value.Endpoints.GetAllOrCreateRecipeEndpoint, searchParam);
+            var endpoint = string.Format(_options.Value.Endpoints.GetAllOrCreateRecipeEndpoint, search, _options.Value.ApiKey);
             var httpClient = _client.CreateClient(_options.Value.ClientName);
             var response = await httpClient.GetAsync(endpoint);
 

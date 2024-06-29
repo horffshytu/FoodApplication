@@ -5,7 +5,7 @@ namespace FoodApplication.APIHandler;
 
 public interface IForkifyApiHandler
 {
-    Task<GetRecipeResponse> GetRecipeList(string searchParam);
+    Task<GetRecipeResponse> GetRecipeList(string search);
 
-    Task<CreateRecipeResponse> CreateRecipe(CreateRecipeRequest request, string searchParam);
+    Task<CreateRecipeResponse> CreateRecipe(CreateRecipeRequest request, string search);
 }

@@ -17,7 +17,7 @@ public record GetRecipeResponse
 public record Data
 {
     [JsonProperty("recipes")]
-    public List<Recipe> Recipes { get; set; } = [];
+    public IEnumerable<Recipe> Recipes { get; set; } = [];
 }
 
 public record Recipe
