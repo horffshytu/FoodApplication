@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace FoodApplication.APIHandler.CreateRecipe;
+namespace FoodApplication.APIHandler.CreateRecipeResp;
 
 public record CreateRecipeResponse
 {
@@ -53,6 +53,6 @@ public record Recipe
 public record Ingredient
 {
     public int? Quantity { get; set; }
-    public string? Unit { get; set; }
-    public string? Description { get; set; }
+    public string Unit { get; set; } = default!;
+    public string Description { get; set; } = default!;
 }

@@ -1,18 +1,51 @@
-@model List<GetRecipeViewModel>
+@model List<GetRecipesViewModel>
 @{
     ViewData["Title"] = "Recipes";
 }
 <div class="container-fluid">
+
     <div class="row">
-        <div class="col-12">
-            @* @Html.Partial("_SearchBar") *@
+        <div class="col-md-12 shadow rounded">
+            <form asp-action="Search">
+                <div class="input-group mb-3">
+                    <select class="form-select" name="search">
+                        <option selected>Select a recipe</option>
+                        <option value="carrot">Carrot</option>
+                        <option value="corn">Corn</option>
+                        <option value="green pepper">Green Pepper</option>
+                        <option value="lettuce">Lettuce</option>
+                        <option value="mushrooms">Mushrooms</option>
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-success">Search</button>
+                </div>
+            </form>
         </div>
     </div>
-</div>
 
-<ul>
-    @foreach (var item in Model)
-    {
-        <li>@item.Title => @item.Publisher</li>
-    }
-</ul>
+    <div class="row mt-3">
+        <div class="col-md-9">
+            @if (Model != null && Model.Any())
+            {
+                <ul style="list-style-type: none">
+                    @foreach (var recipe in Model)
+                    {
+                        <li>
+                            <h5>
+                                <a href="@Url.Action("RecipeDetail", new {RecipeId = recipe.Id})">@recipe.Title</a>
+                            </h5>
+                            <p><strong>Publisher:</strong> @recipe.Publisher</p>
+                            <a href="@Url.Action("RecipeDetail", new {RecipeId = recipe.Id})">
+                                <img src="@recipe.ImageUrl" alt="Image of @recipe.Title" style="width:200px; height:auto" />
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+            else if (Model != null)
+            {
+                <p>No recipes found.</p>
+            }
+        </div>
+    </div>
+
+</div>

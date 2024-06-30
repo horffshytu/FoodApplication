@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "y2ELR14pIrA=",
+  "dgSpecHash": "LuxZqPlq0dE=",
   "success": true,
   "projectFilePath": "C:\\Users\\Abbas\\Desktop\\FoodApplication\\FoodApplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Abbas\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\Abbas\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []

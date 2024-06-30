@@ -2,7 +2,9 @@ using System.Net;
 using System.Net.Mime;
 using System.Text;
 using FoodApplication.APIHandler.CreateRecipe;
+using FoodApplication.APIHandler.CreateRecipeResp;
 using FoodApplication.APIHandler.GetRecipe;
+using FoodApplication.APIHandler.GetRecipes;
 using FoodApplication.Extensions;
 using FoodApplication.Helpers;
 using Microsoft.Extensions.Options;
@@ -28,7 +30,7 @@ public class ForkifyApiHandler : IForkifyApiHandler
         {
             string jsonContent = JsonConvert.SerializeObject(request);
             StringContent content = new(jsonContent, Encoding.UTF8, MediaTypeNames.Application.Json);
-            var endpoint = string.Format(_options.Value.Endpoints.GetAllOrCreateRecipeEndpoint, searchParam, _options.Value.ApiKey);
+            var endpoint = string.Format(_options.Value.Endpoints.CreateRecipeEndpoint, searchParam, _options.Value.ApiKey);
             var httpClient = _client.CreateClient(_options.Value.ClientName);
 
             if (!httpClient.DefaultRequestHeaders.Contains(HeaderNames.Accept))
@@ -52,11 +54,33 @@ public class ForkifyApiHandler : IForkifyApiHandler
         }
     }
 
-    public async Task<GetRecipeResponse> GetRecipeList(string search)
+    public async Task<GetRecipesResponse> GetRecipeList(string search)
     {
         try
         {
-            var endpoint = string.Format(_options.Value.Endpoints.GetAllOrCreateRecipeEndpoint, search, _options.Value.ApiKey);
+            var endpoint = string.Format(_options.Value.Endpoints.GetRecipesEndpoint, search);
+            var httpClient = _client.CreateClient(_options.Value.ClientName);
+            var response = await httpClient.GetAsync(endpoint);
+
+            if (response.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                var data = await response.ReadContentAs<GetRecipesResponse>();
+                return data;
+            }
+
+            throw new HttpRequestException($"Unexpected error: {response.StatusCode}");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("An error occurred.", ex);
+        }
+    }
+
+    public async Task<GetRecipeResponse> GetRecipe(string recipeId)
+    {
+        try
+        {
+            var endpoint = string.Format(_options.Value.Endpoints.GetRecipeEndpoint, recipeId);
             var httpClient = _client.CreateClient(_options.Value.ClientName);
             var response = await httpClient.GetAsync(endpoint);
 

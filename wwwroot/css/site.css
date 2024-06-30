@@ -17,7 +17,6 @@ html {
   min-height: 100%;
 }
 
-
 .text-pink{
     color: #ff1448 !important;
 }
@@ -27,9 +26,11 @@ html {
 #carouselExampleSlidesOnly{
     height: 400px;
 }
-footer{
+
+.custom-footer{
   background-color: #0d243d;
 }
+
 header{
   z-index: 1000;
 }

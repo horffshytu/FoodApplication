@@ -10,6 +10,8 @@ public class ApiSettings
 
 public class Endpoints
 {
-    public string GetAllOrCreateRecipeEndpoint { get; set; } = default!;
-    public string GetSingleOrDeleteRecipeEndpoint { get; set; } = default!;
+    public string GetRecipesEndpoint { get; set; } = default!;
+    public string CreateRecipeEndpoint { get; set; } = default!;
+    public string GetRecipeEndpoint { get; set; } = default!;
+    public string DeleteRecipeEndpoint { get; set; } = default!;
 }

@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using FoodApplication.Helpers;
 using FoodApplication.IOC;
 
@@ -11,6 +13,13 @@ builder.Services.AddControllersWithViews();
 
 //IOptions Registration
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection(Constants.API_SETTINGS_SECTION));
+
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 10;
+    config.IsDismissable = true;
+    config.Position = NotyfPosition.TopRight;
+});
 
 var app = builder.Build();
 
@@ -28,7 +37,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseNotyf();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
